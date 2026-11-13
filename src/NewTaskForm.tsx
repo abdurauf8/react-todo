@@ -1,7 +1,7 @@
 export default function Form() {
     return (
-        <div>
-            <input type="text" />
+        <div className="task_form">
+            <input type="text" placeholder="What needs to be done?"/>
             <button>Add</button>
         </div>
     )

@@ -12,8 +12,8 @@ function App() {
 
   return (
     <>
-      <h1 className="title">Todos</h1>
-      <div>
+      {/* <h1 className="title">Todos</h1> */}
+      <div className="app">
         <Form />
         <TaskList />
         <Footer />
