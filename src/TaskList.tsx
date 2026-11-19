@@ -2,10 +2,10 @@ import Task from "./Task.tsx";
 
 export default function TaskList() {
   return (
-    <>
-      <Task task="daily workout" />
-      <Task task="doing homework" />
-      <Task task="going to shop" />
-    </>
+    <ul className="todo-list">
+      <Task task="Completed task" status="completed" />
+      <Task task="Editing task" status="editing" />
+      <Task task="Active task"/>
+    </ul>
   );
 }

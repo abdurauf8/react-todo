@@ -2,10 +2,10 @@ import TaskFilter from "./TaskFilter.tsx";
 
 export default function Footer() {
   return (
-    <div className="footer">
-      <p>1 items left</p>
+    <footer className="footer">
+      <span className="todo-count">1 items left</span>
       <TaskFilter />
-      <button>Clear completed</button>
-    </div>
+      <button className="clear-completed">Clear completed</button>
+    </footer>
   );
 }

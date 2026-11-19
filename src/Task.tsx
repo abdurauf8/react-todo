@@ -1,21 +1,21 @@
-import EditIcon from "./assets/edit_icon.svg";
-import DeleteIcon from "./assets/delete_icon.svg";
+type TaskProps = {
+  task: string;
+  status?: string;
+};
 
-export default function Task({ task }) {
+export default function Task({ task, status = "" }: TaskProps) {
   return (
-    <div className="task">
-      <input type="checkbox" />
-      <div className="main_part">
-        <h2>{task}</h2>
-        <div className="task_buttons">
-          <button>
-            <img src={EditIcon} alt="" />
-          </button>
-          <button>
-            <img src={DeleteIcon} alt="" />
-          </button>
-        </div>
+    <li className={status}>
+      <div className="view">
+        <input className="toggle" type="checkbox" />
+        <label>
+          <span className="description">{task}</span>
+          <span className="created">{new Date().toLocaleString("ru-RU")}</span>
+        </label>
+        <button className="icon icon-edit"></button>
+        <button className="icon icon-destroy"></button>
       </div>
-    </div>
+      <input type="text" className="edit" value="Editing task" />
+    </li>
   );
 }
