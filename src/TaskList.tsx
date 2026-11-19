@@ -5,7 +5,7 @@ export default function TaskList() {
     <ul className="todo-list">
       <Task task="Completed task" status="completed" />
       <Task task="Editing task" status="editing" />
-      <Task task="Active task"/>
+      <Task task="Active task" />
     </ul>
   );
 }
