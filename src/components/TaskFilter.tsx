@@ -1,14 +1,52 @@
-export default function TaskFilter() {
+import { useState } from "react";
+
+export default function TaskFilter({ filter }) {
+  const [className, setClassName] = useState({
+    all: "selected",
+    active: "",
+    completed: "",
+  });
+
   return (
     <ul className="filters">
       <li>
-        <button className="selected">All</button>
+        <button
+          className={className.all}
+          onClick={() => {
+            if (!className.all) {
+              setClassName({ all: "selected", active: "", completed: "" });
+              filter("all");
+            }
+          }}
+        >
+          All
+        </button>
       </li>
       <li>
-        <button>Active</button>
+        <button
+          className={className.active}
+          onClick={() => {
+            if (!className.active) {
+              setClassName({ all: "", active: "selected", completed: "" });
+              filter("active");
+            }
+          }}
+        >
+          Active
+        </button>
       </li>
       <li>
-        <button>Completed</button>
+        <button
+          className={className.completed}
+          onClick={() => {
+            if (!className.completed) {
+              setClassName({ all: "", active: "", completed: "selected" });
+              filter("completed");
+            }
+          }}
+        >
+          Completed
+        </button>
       </li>
     </ul>
   );

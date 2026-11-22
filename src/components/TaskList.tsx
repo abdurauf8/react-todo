@@ -1,6 +1,11 @@
 import Task from "./Task.tsx";
 
-export default function TaskList({ todos, deleteTask, updateTask }) {
+export default function TaskList({
+  todos,
+  deleteTask,
+  updateTask,
+  toggleCompleted,
+}) {
   return (
     <ul className="todo-list">
       {/* <Task task="Completed task" status="completed" />
@@ -15,6 +20,8 @@ export default function TaskList({ todos, deleteTask, updateTask }) {
           date={task.date}
           deleteTask={deleteTask}
           updateTask={updateTask}
+          toggleCompleted={toggleCompleted}
+          isCompleted={task.isCompleted}
         />
       ))}
     </ul>

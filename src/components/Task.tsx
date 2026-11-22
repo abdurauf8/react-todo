@@ -6,6 +6,8 @@ type TaskProps = {
   date: string;
   deleteTask: (id: number) => void;
   updateTask: (id: number, newValue: string) => void;
+  toggleCompleted: (id: number) => void;
+  isCompleted: boolean;
 };
 
 export default function Task({
@@ -14,16 +16,30 @@ export default function Task({
   date,
   deleteTask,
   updateTask,
+  toggleCompleted,
+  isCompleted,
 }: TaskProps) {
   const [data, setData] = useState({
-    className: "activa",
+    className: isCompleted ? "completed" : "active",
     inputValue: task,
   });
 
   return (
     <li className={data.className}>
       <div className="view">
-        <input className="toggle" type="checkbox" />
+        <input
+          className="toggle"
+          type="checkbox"
+          checked={isCompleted}
+          onChange={(e) => {
+            toggleCompleted(id);
+            if (e.target.checked) {
+              setData((prev) => ({ ...prev, className: "completed" }));
+              return;
+            }
+            setData((prev) => ({ ...prev, className: "active" }));
+          }}
+        />
         <label>
           <span className="description">{task}</span>
           <span className="created">{date}</span>
