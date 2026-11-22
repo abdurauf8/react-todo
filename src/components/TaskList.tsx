@@ -1,17 +1,26 @@
 import Task from "./Task.tsx";
 
+type Task = {
+  id: number;
+  name: string;
+  date: string;
+  isCompleted: boolean;
+};
+type TaskListProps = {
+  todos: Task[];
+  deleteTask: (id: number) => void;
+  updateTask: (id: number, newValue: string) => void;
+  toggleCompleted: (id: number) => void;
+};
+
 export default function TaskList({
   todos,
   deleteTask,
   updateTask,
   toggleCompleted,
-}) {
+}: TaskListProps) {
   return (
     <ul className="todo-list">
-      {/* <Task task="Completed task" status="completed" />
-      <Task task="Editing task" status="editing" />
-      <Task task="Active task" /> */}
-
       {todos.map((task) => (
         <Task
           key={task.id}

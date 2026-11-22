@@ -1,13 +1,15 @@
 import TaskFilter from "./TaskFilter.tsx";
 
-export default function Footer({ filter, clearCompleted }) {
+type Footer = {
+  numberOfItems: number;
+};
+
+export default function Footer({ numberOfItems }: Footer) {
   return (
     <footer className="footer">
-      <span className="todo-count">1 items left</span>
-      <TaskFilter filter={filter} />
-      <button className="clear-completed" onClick={() => clearCompleted()}>
-        Clear completed
-      </button>
+      <span className="todo-count">{numberOfItems} items left</span>
+      <TaskFilter />
+      <button className="clear-completed">Clear completed</button>
     </footer>
   );
 }

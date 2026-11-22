@@ -31,13 +31,12 @@ export default function Task({
           className="toggle"
           type="checkbox"
           checked={isCompleted}
-          onChange={(e) => {
+          onChange={() => {
+            setData((prev) => ({
+              ...prev,
+              className: isCompleted ? "active" : "completed",
+            }));
             toggleCompleted(id);
-            if (e.target.checked) {
-              setData((prev) => ({ ...prev, className: "completed" }));
-              return;
-            }
-            setData((prev) => ({ ...prev, className: "active" }));
           }}
         />
         <label>
@@ -62,7 +61,18 @@ export default function Task({
           if (e.key === "Enter") {
             updateTask(id, data.inputValue);
             setData({ ...data, className: "active" });
+          } else if (e.key === "Escape") {
+            setData((prev) => ({
+              ...prev,
+              className: isCompleted ? "completed" : "active",
+            }));
           }
+        }}
+        onBlur={() => {
+          setData((prev) => ({
+            ...prev,
+            className: isCompleted ? "completed" : "active",
+          }));
         }}
       />
     </li>

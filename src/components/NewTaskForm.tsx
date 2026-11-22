@@ -1,6 +1,8 @@
 import { useState } from "react";
-
-export default function Form({ addTask }) {
+type FormProps = {
+  addTask: (taskName: string) => void;
+};
+export default function Form({ addTask }: FormProps) {
   const [inputValue, setInputValue] = useState("");
 
   return (
