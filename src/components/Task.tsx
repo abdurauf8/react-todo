@@ -1,9 +1,11 @@
 type TaskProps = {
+  id: number;
   task: string;
-  status?: string;
+  date: string;
+  deleteTask: (id: number) => void;
 };
 
-export default function Task({ task, date }: TaskProps) {
+export default function Task({ id, task, date, deleteTask }: TaskProps) {
   return (
     <li>
       <div className="view">
@@ -13,7 +15,10 @@ export default function Task({ task, date }: TaskProps) {
           <span className="created">{date}</span>
         </label>
         <button className="icon icon-edit"></button>
-        <button className="icon icon-destroy"></button>
+        <button
+          className="icon icon-destroy"
+          onClick={() => deleteTask(id)}
+        ></button>
       </div>
       <input type="text" className="edit" value="Editing task" />
     </li>
