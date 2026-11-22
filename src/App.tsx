@@ -69,7 +69,12 @@ function App() {
           updateTask={updateTask}
           toggleCompleted={toggleCompleted}
         />
-        <Footer numberOfItems={todos.length} />
+        <Footer
+          numberOfItems={todos.reduce((acc, c) => {
+            if (!c.isCompleted) acc++;
+            return acc;
+          }, 0)}
+        />
       </section>
     </>
   );
