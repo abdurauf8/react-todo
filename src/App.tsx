@@ -1,18 +1,28 @@
-// import { useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import Form from "./NewTaskForm.tsx";
-import TaskList from "./TaskList.tsx";
-import Footer from "./Footer.tsx";
+import Form from "./components/NewTaskForm.tsx";
+import TaskList from "./components/TaskList.tsx";
+import Footer from "./components/Footer.tsx";
 
 function App() {
-  // const [count, setCoun] = useState(0);
+  const [todos] = useState([
+    {
+      id: 1,
+      name: "daily workout",
+      date: new Date("2026-08-14, 14:23:51").toLocaleString("ru-RU"),
+    },
+    {
+      id: 2,
+      name: "homework",
+      date: new Date("2026-08-14, 14:23:51").toLocaleString("ru-RU"),
+    },
+  ]);
 
   return (
     <>
-      {/* <h1 className="title">Todos</h1> */}
       <section className="todoapp main">
         <Form />
-        <TaskList />
+        <TaskList todos={todos} />
         <Footer />
       </section>
     </>

@@ -3,14 +3,14 @@ type TaskProps = {
   status?: string;
 };
 
-export default function Task({ task, status = "" }: TaskProps) {
+export default function Task({ task, date }: TaskProps) {
   return (
-    <li className={status}>
+    <li>
       <div className="view">
         <input className="toggle" type="checkbox" />
         <label>
           <span className="description">{task}</span>
-          <span className="created">{new Date().toLocaleString("ru-RU")}</span>
+          <span className="created">{date}</span>
         </label>
         <button className="icon icon-edit"></button>
         <button className="icon icon-destroy"></button>
