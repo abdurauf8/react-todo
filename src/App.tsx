@@ -29,14 +29,29 @@ function App() {
   };
 
   const deleteTask = (id: number) => {
-    setTodos(todos.filter((task) => task.id !== id));
+    setTodos((prev) => prev.filter((task) => task.id !== id));
+  };
+
+  const updateTask = (id: number, newValue: string) => {
+    setTodos((prev) =>
+      prev.map((task) => {
+        if (task.id === id) {
+          return { ...task, name: newValue };
+        }
+        return task;
+      }),
+    );
   };
 
   return (
     <>
       <section className="todoapp main">
         <Form addTask={addTask} />
-        <TaskList todos={todos} deleteTask={deleteTask} />
+        <TaskList
+          todos={todos}
+          deleteTask={deleteTask}
+          updateTask={updateTask}
+        />
         <Footer />
       </section>
     </>
