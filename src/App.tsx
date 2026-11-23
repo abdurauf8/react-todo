@@ -64,6 +64,10 @@ function App() {
     setCategory(category);
   };
 
+  const clearCompleted = () => {
+    setTodos((prev) => prev.filter((task) => !task.isCompleted));
+  };
+
   return (
     <>
       <section className="todoapp main">
@@ -86,6 +90,7 @@ function App() {
             return acc;
           }, 0)}
           filter={filter}
+          clearCompleted={clearCompleted}
         />
       </section>
     </>
