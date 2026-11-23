@@ -2,6 +2,7 @@ import { useState } from "react";
 type FormProps = {
   addTask: (taskName: string) => void;
 };
+
 export default function Form({ addTask }: FormProps) {
   const [inputValue, setInputValue] = useState("");
 

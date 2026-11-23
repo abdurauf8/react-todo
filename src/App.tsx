@@ -19,6 +19,7 @@ function App() {
       isCompleted: false,
     },
   ]);
+  const [category, setCategory] = useState("all");
 
   const addTask = (taskName: string) => {
     const newId =
@@ -59,12 +60,22 @@ function App() {
     );
   };
 
+  const filter = (category: string) => {
+    setCategory(category);
+  };
+
   return (
     <>
       <section className="todoapp main">
         <Form addTask={addTask} />
         <TaskList
-          todos={todos}
+          todos={
+            category === "all"
+              ? todos
+              : todos.filter(
+                  (task) => task.isCompleted === (category !== "active"),
+                )
+          }
           deleteTask={deleteTask}
           updateTask={updateTask}
           toggleCompleted={toggleCompleted}
@@ -74,6 +85,7 @@ function App() {
             if (!c.isCompleted) acc++;
             return acc;
           }, 0)}
+          filter={filter}
         />
       </section>
     </>

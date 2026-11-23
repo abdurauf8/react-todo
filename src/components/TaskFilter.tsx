@@ -1,6 +1,9 @@
 import { useState } from "react";
+type TaskFIlter = {
+  filter: (category: string) => void;
+};
 
-export default function TaskFilter() {
+export default function TaskFilter({ filter }: TaskFIlter) {
   const [className, setClassName] = useState({
     all: "selected",
     active: "",
@@ -15,6 +18,7 @@ export default function TaskFilter() {
           onClick={() => {
             if (!className.all) {
               setClassName({ all: "selected", active: "", completed: "" });
+              filter("all");
             }
           }}
         >
@@ -27,6 +31,7 @@ export default function TaskFilter() {
           onClick={() => {
             if (!className.active) {
               setClassName({ all: "", active: "selected", completed: "" });
+              filter("active");
             }
           }}
         >
@@ -39,6 +44,7 @@ export default function TaskFilter() {
           onClick={() => {
             if (!className.completed) {
               setClassName({ all: "", active: "", completed: "selected" });
+              filter("completed");
             }
           }}
         >
